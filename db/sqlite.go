@@ -6,8 +6,6 @@ import (
 	"song-recognition/models"
 	"song-recognition/utils"
 	"strings"
-
-	"github.com/mattn/go-sqlite3"
 )
 
 type SQLiteClient struct {
