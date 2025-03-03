@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"song-recognition/models"
 	"song-recognition/utils"
-	"github.com/mattn/go-sqlite3"
 )
 
 type DBClient interface {
