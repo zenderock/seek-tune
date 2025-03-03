@@ -142,8 +142,12 @@ func (db *SQLiteClient) RegisterSong(songTitle, songArtist, ytID string) (uint32
 	songKey := utils.GenerateSongKey(songTitle, songArtist)
 	if _, err := stmt.Exec(songID, songTitle, songArtist, ytID, songKey); err != nil {
 		tx.Rollback()
-		if sqliteErr, ok := err.(sqlite3.SQLiteError); ok && sqliteErr.ExtendedCode == sqlite3.ErrConstraintUnique {
-    return 0, fmt.Errorf("song with ytID or key already exists: %v", err)
+if err != nil {
+    tx.Rollback()
+    if strings.Contains(err.Error(), "UNIQUE constraint failed") {
+        return 0, fmt.Errorf("song with ytID or key already exists: %v", err)
+    }
+    return 0, fmt.Errorf("failed to register song: %v", err)
 }
 		return 0, fmt.Errorf("failed to register song: %v", err)
 	}
