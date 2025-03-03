@@ -18,7 +18,7 @@ import (
 	"google.golang.org/api/youtube/v3"
 )
 
-const developerKey = ""
+const developerKey = "AIzaSyBCqzg4PC68LbMy7iyIvvAmux82qx84d8Q"
 
 // https://github.com/BharatKalluri/spotifydl/blob/v0.1.0/src/youtube.go
 func getYoutubeIdWithAPI(spTrack Track) (string, error) {
